@@ -1,4 +1,5 @@
 ﻿using System;
+using Simulations.SimulationBoid;
 
 namespace Simulations
 {
@@ -10,7 +11,7 @@ namespace Simulations
             double leftMargin = 10, rightMargin = width - 10;
             double topMargin = 2, bottomMargin = height - 2;
 
-            var simulator = new BoidSimulation(boidRep: ".", flokSize: 50, leftMargin: leftMargin, rightMargin: rightMargin, topMargin: topMargin, bottomMargin: bottomMargin);
+            var simulator = new BoidSimulation(flokSize: 50, leftMargin: leftMargin, rightMargin: rightMargin, topMargin: topMargin, bottomMargin: bottomMargin);
             simulator.Simulate();
         }
     }
