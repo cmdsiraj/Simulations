@@ -1,10 +1,8 @@
 ﻿/*
  * Reference: https://vanhunteradams.com/Pico/Animal_Movement/Boids-algorithm.html
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+
+using Simulations.Common;
 
 namespace Simulations
 {
@@ -25,32 +23,7 @@ namespace Simulations
             this.bottomMargin = bottom;
         }
     }
-    internal struct Vector
-    {
-        public double X, Y;
-        public Vector(double x, double y) { this.X = x; this.Y = y; }
-        public static Vector operator +(Vector a, Vector b) => new Vector(a.X + b.X, a.Y + b.Y);
-        public static Vector operator -(Vector a, Vector b) => new Vector(a.X - b.X, a.Y - b.Y);
-        public static Vector operator *(Vector a, double b) => new Vector(a.X * b, a.Y * b);
-        public static Vector operator /(Vector a, double b) => new Vector(a.X / b, a.Y / b);
-        public double Magnitude => Math.Sqrt((X * X) + (Y * Y));
-        public Vector Normalize
-        {
-            get
-            {
-                var mag = Magnitude;
-                return mag == 0 ? Zero : new Vector(X / mag, Y / mag);
-            }
-        }
-
-        public static double Distance(Vector a, Vector b)
-        {
-            var dx = a.X - b.X;
-            var dy = a.Y - b.Y;
-            return Math.Sqrt(dx * dx + dy * dy);
-        }
-        public static Vector Zero => new Vector(0, 0);
-    }
+    
 
     internal class Boid
     {
@@ -61,8 +34,7 @@ namespace Simulations
         private readonly double PROTECTED_RANGE = 4.0;     
         private readonly double AVOID_FACTOR = 0.6;         
         private readonly double MATCHING_FACTOR = 0.05;     
-        private readonly double CENTERING_FACTOR = 0.005;   
-        private readonly double TURN_FACTOR = 0.15;
+        private readonly double CENTERING_FACTOR = 0.005;  
         private readonly double VISUAL_RANGE = 25.0;        
         private readonly double MAX_SPEED = 1.8;            
         private readonly double MIN_SPEED = 0.8;
